@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_block %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<style>
+    .product-item {
+        height: 400px; /* Adjust the height as needed */
+        overflow: hidden;
+    }
+</style>
+
+<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+    <p class="text-primary text-uppercase mb-2">Cakes</p>
+    <h1 class="display-6 mb-4">Explore The Categories Of Our Bakery products</h1>
+</div>
+<div class="row g-4">
+    {% for p in data %}
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+            <div class="position-relative mt-auto">
+                <img class="img-fluid" src="{{ p.image.url }}" alt="">
+                <div class="product-overlay">
+                    <!-- <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a> -->
+                </div>
+            </div>
+            <div class="text-center p-4">
+                
+                    <a href="{%url 'product-detail' p.id%}"><h3 class="mb-3">{{ p.title }}</h3></a>
+
+            
+                <span>{{ p.description }}</span>
+              
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
